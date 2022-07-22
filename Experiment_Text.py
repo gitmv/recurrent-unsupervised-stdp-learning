@@ -6,9 +6,9 @@ from Behaviour_Text_Modules import *
 ui = True
 neuron_count = 2400
 
-plastic_steps = 30000
+input_steps = 30000
 recovery_steps = 10000
-text_gen_steps = 5000
+free_steps = 5000
 
 #grammar = get_char_sequence(5)     #A
 #grammar = get_char_sequence(23)    #B
@@ -83,5 +83,5 @@ if __name__ == '__main__' and ui:
     show_UI(net, sm)
 else:
     #net.add_behaviours_to_object({200: Recorder(variables=['np.mean(n.output)'])}, net.exc_neurons)
-    train_and_generate_text(net, plastic_steps, recovery_steps, text_gen_steps, sm=sm)
+    train_and_generate_text(net, input_steps, recovery_steps, free_steps, sm=sm)
     #plot_output_trace(net['np.mean(n.output)', 0], plastic_steps, recovery_steps, net.exc_neurons.target_activity)

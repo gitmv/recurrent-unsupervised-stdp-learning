@@ -4,10 +4,9 @@ from UI.UI_Helper import *
 from Behaviour_Bar_Activator import *
 
 ui = True
-neuron_count = 1000#1500#2400
-plastic_steps = 30000
+input_steps = 30000
 recovery_steps = 10000
-text_gen_steps = 5000
+free_steps = 5000
 
 net = Network(tag='Bar Learning Network')
 
@@ -77,5 +76,5 @@ Classifier_Weights_Post(net['exc_neurons', 0]),
 if __name__ == '__main__' and ui:
     show_UI(net, sm)
 else:
-    generate_response_images(net)
+    generate_response_images(net, input_steps, recovery_steps, free_steps)
 

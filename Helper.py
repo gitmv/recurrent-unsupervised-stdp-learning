@@ -1,23 +1,21 @@
 from PymoNNto.Exploration.Evolution.Interface_Functions import *
 from PymoNNto import *
 
-def train_and_generate_text(net, plastic_steps, recovery_steps=None, text_gen_steps=5000, sm=None, pretrained=False):
+def train_and_generate_text(net, input_steps, recovery_steps, free_steps, sm=None, pretrained=False):
 
-    net.simulate_iterations(plastic_steps, 100)
+    net.simulate_iterations(input_steps, 100)
 
     # deactivate Input
     #net.deactivate_mechanisms('STDP')
     #net.deactivate_mechanisms('Normalization')
     net.deactivate_mechanisms('Text_Activator')
 
-    # recovery phase
-    if recovery_steps is not None:
-        net.simulate_iterations(recovery_steps, 100)
+    net.simulate_iterations(recovery_steps, 100)
 
     # text generation
     tr = net['Text_Reconstructor', 0]
     tr.reconstruction_history = ''
-    net.simulate_iterations(text_gen_steps, 100)
+    net.simulate_iterations(free_steps, 100)
     print(tr.reconstruction_history)
 
     # scoring
@@ -71,17 +69,17 @@ def save_trace(it, net):
     im.save(net.sm.absolute_path + "act"+ str(neurons.iteration) +".png")
 
 
-def generate_response_images(net):
+def generate_response_images(net, input_steps, recovery_steps, free_steps):
     neurons = net['exc_neurons', 0]
     neurons.add_analysis_module(Neuron_Classification_Colorizer())
     net.add_behaviours_to_object({100:Recorder(variables=['np.mean(n.output)'])}, neurons)
 
-    net.simulate_iterations(30000, 501, batch_progress_update_func=save_trace)
+    net.simulate_iterations(input_steps, 501, batch_progress_update_func=save_trace)
 
     net.deactivate_mechanisms('STDP')
     net.deactivate_mechanisms('Normalization')
     net.deactivate_mechanisms('Input')
 
-    net.simulate_iterations(5000, 201, batch_progress_update_func=save_trace)
+    net.simulate_iterations(recovery_steps, 201, batch_progress_update_func=save_trace)
 
-    net.simulate_iterations(5000, 501, batch_progress_update_func=save_trace)
+    net.simulate_iterations(free_steps, 501, batch_progress_update_func=save_trace)
