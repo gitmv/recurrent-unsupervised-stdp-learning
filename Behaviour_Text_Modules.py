@@ -155,6 +155,21 @@ class Text_Reconstructor(Behaviour):
 
             self.reconstruction_history += self.current_reconstruction_char
 
+class Exception_Activator(Behaviour):
+
+    #activate with following command
+    #neurons['Exception_Activator', 0].txt='abcdefg'
+    #neurons['Exception_Activator', 0].text_position = 0
+
+    def set_variables(self, neurons):
+        self.txt = ' exception exception. exception exception. exception exception.'
+        self.text_position = -1
+
+    def new_iteration(self, neurons):
+        if self.text_position>=0 and self.text_position<len(self.txt):
+            neurons['Text_Generator', 0].next_char = self.txt[self.text_position]
+            self.text_position += 1
+
 def unique(l):
     return list(sorted(set(l)))
 

@@ -15,33 +15,17 @@ text_gen_steps = 5000
 #grammar = get_long_text()          #C
 grammar = get_random_sentences(3)    #D
 
-
-input_density=0.92#7#92
-target_activity = 1.0 / len(''.join(grammar))# * input_density 0.066666#
+input_density=0.92
+target_activity = 1.0 / len(''.join(grammar))
 exc_output_exponent = 0.01 / target_activity + 0.22
 inh_output_slope = 0.4 / target_activity + 3.6
 LI_threshold = np.tanh(inh_output_slope * target_activity)
 
 net = Network(tag='Text Learning Network')
 
-class Exception_Activator(Behaviour):
-
-    #activate with following command
-    #neurons['Exception_Activator', 0].txt='abcdefg'
-    #neurons['Exception_Activator', 0].text_position = 0
-
-    def set_variables(self, neurons):
-        self.txt = ' exception exception. exception exception. exception exception.'
-        self.text_position = -1
-
-    def new_iteration(self, neurons):
-        if self.text_position>=0 and self.text_position<len(self.txt):
-            neurons['Text_Generator', 0].next_char = self.txt[self.text_position]
-            self.text_position += 1
-
 NeuronGroup(net=net, tag='exc_neurons', size=get_squared_dim(neuron_count), color=blue, behaviour={
 
-    9: Exception_Activator(),
+    #9: Exception_Activator(),
 
     # excitatory input
     10: Text_Generator(text_blocks=grammar),
