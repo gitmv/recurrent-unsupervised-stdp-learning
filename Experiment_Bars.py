@@ -19,8 +19,8 @@ LI_threshold = np.tanh(inh_output_slope * target_activity)
 NeuronGroup(net=net, tag='exc_neurons', size=NeuronDimension(width=20, height=10, depth=1), color=blue, behaviour={
 
     # excitatory input
-    #10: Line_Patterns(center_x=5, center_y=[0,1,2,3,4,5,6,7,8,9], degree=0, line_length=10, strength=5.0, random_order=False),
-    10: Line_Patterns(center_x=5, center_y=5, degree=list(np.arange(0, 360, 20)), line_length=10, strength=5.0, random_order=False),
+    #10: Line_Patterns(center_x=5, center_y=[0,1,2,3,4,5,6,7,8,9], degree=0, line_length=10, strength=5.0, random_order=False), #Experiment E
+    10: Line_Patterns(center_x=5, center_y=5, degree=list(np.arange(0, 360, 20)), line_length=10, strength=5.0, random_order=False), #Experiment F
 
     12: Synapse_Operation(transmitter='GLU', strength=1.0),
 

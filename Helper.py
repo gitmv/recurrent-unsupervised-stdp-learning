@@ -23,6 +23,15 @@ def train_and_generate_text(net, input_steps, recovery_steps, free_steps, sm=Non
     set_score(score, sm, info={'text': tr.reconstruction_history, 'simulated_iterations': net.iteration})
 
 
+
+
+
+
+
+
+
+
+
 def plot_output_trace(data, plastic_steps, recovery_steps, target_activity, w=500, g=200):
     w2=int(w/2)
 
