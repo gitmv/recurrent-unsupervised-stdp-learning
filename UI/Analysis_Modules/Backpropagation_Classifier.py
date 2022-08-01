@@ -1,6 +1,6 @@
 from PymoNNto import *
 
-class Classifier_Backpropagation(AnalysisModule):
+class Backpropagation_Classifier(AnalysisModule):
 
     def initialize(self, neurons):
         self.add_tag('classifier')

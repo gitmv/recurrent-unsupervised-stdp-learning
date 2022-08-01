@@ -1,4 +1,4 @@
-from Behaviour_Modules import *
+from Behaviour_Core_Modules import *
 from UI.UI_Helper import *
 from Behaviour_Bar_Activator import *
 
@@ -100,14 +100,9 @@ SynapseGroup(net=net, tag='EI,GABA', src='inh_neurons', dst='exc_neurons', behav
 sm = StorageManager(net.tags[0], random_nr=True)
 net.initialize(info=True, storage_manager=sm)
 
-class CWP(Classifier_base):
-    def get_data_matrix(self, neurons):
-        return get_partitioned_synapse_matrix(neurons, 'ES', 'W').T
-
-CWP(net['exc_neurons', 0])
-
 #User interface
 if __name__ == '__main__' and ui:
+    Weight_Classifier_Pre(net['exc_neurons', 0], syn_tag='ES')
     show_UI(net, sm)
 else:
     print('please use UI')

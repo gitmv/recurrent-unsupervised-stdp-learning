@@ -39,28 +39,3 @@ class Activity_Response_Behaviour(Behaviour):
         alphabet = np.array(self.generator.alphabet)
         chars = alphabet[sequence_indx]
         return ''.join(chars).replace(' ', '_')
-
-    '''
-    def get_classes(self, sensitivity=2):
-        print('computing cluster classes...')
-        import scipy.cluster.hierarchy as sch
-        import pandas as pd
-        s = self.recon_data.shape
-        data = self.recon_data.reshape((s[0], s[1]*s[2]))
-
-        mask = np.sum(data, axis=1) > 0
-
-        df = pd.DataFrame(data[mask].T)
-        corrMatrix = df.corr()
-
-        pairwise_distances = sch.distance.pdist(corrMatrix)
-        linkage = sch.linkage(pairwise_distances, method='complete')
-        cluster_distance_threshold = pairwise_distances.max() / sensitivity
-        idx_to_cluster_array = sch.fcluster(linkage, cluster_distance_threshold, criterion='distance')
-
-        result = np.zeros(s[0])-1
-
-        result[mask] = idx_to_cluster_array
-        print('computing cluster classes... done')
-        return result
-    '''

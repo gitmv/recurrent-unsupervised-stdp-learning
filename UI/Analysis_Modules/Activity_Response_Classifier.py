@@ -1,6 +1,6 @@
 from UI.Analysis_Modules.Activity_Response_Behaviour import *
 
-class Classifier_Activity_Response(AnalysisModule):
+class Activity_Response_Classifier(AnalysisModule):
 
     def initialize(self, neurons):
         self.add_tag('classifier')

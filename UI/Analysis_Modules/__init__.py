@@ -1,15 +1,14 @@
-from UI.Analysis_Modules.Classifier_Weights_Pre import *
-from UI.Analysis_Modules.Classifier_Weights_Post import *
-from UI.Analysis_Modules.Classifier_Backpropagation import *
-from UI.Analysis_Modules.Classifier_Activity_Response import *
-from UI.Analysis_Modules.Labeler_Activity_Response import *
-from UI.Analysis_Modules.Labeler_Backpropagation import *
-from UI.Analysis_Modules.Static_Classification import *
+from PymoNNto.Exploration.AnalysisModules.Weight_Classifier_Pre import *
+from PymoNNto.Exploration.AnalysisModules.Weight_Classifier_Post import *
+from UI.Analysis_Modules.Backpropagation_Classifier import *
+from UI.Analysis_Modules.Activity_Response_Classifier import *
+from UI.Analysis_Modules.Activity_Response_Labeler import *
+from UI.Analysis_Modules.Backpropagation_Labeler import *
 
 def add_all_analysis_modules(ng):
-    Classifier_Weights_Pre(ng)
-    Classifier_Weights_Post(ng)
-    Classifier_Backpropagation(ng)
-    #Classifier_Activity_Response(ng)
-    Labeler_Activity_Response(ng)
-    Labeler_Backpropagation(ng)
+    Weight_Classifier_Pre(ng)
+    Weight_Classifier_Post(ng)
+    Backpropagation_Classifier(ng)
+    Activity_Response_Classifier(ng)
+    Activity_Response_Labeler(ng)
+    Backpropagation_Labeler(ng)

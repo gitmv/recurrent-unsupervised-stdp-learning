@@ -1,7 +1,7 @@
 from UI.Analysis_Modules.Labeler_Base import *
 from UI.Analysis_Modules.Activity_Response_Behaviour import *
 
-class Labeler_Activity_Response(Labeler_Base):
+class Activity_Response_Labeler(Labeler_Base):
 
     def initialize(self, neurons):
         super().initialize(neurons)

@@ -85,8 +85,8 @@ def generate_response_images(net, input_steps, recovery_steps, free_steps):
 
     net.simulate_iterations(input_steps, 501, batch_progress_update_func=save_trace)
 
-    net.deactivate_mechanisms('STDP')
-    net.deactivate_mechanisms('Normalization')
+    #net.deactivate_mechanisms('STDP')
+    #net.deactivate_mechanisms('Normalization')
     net.deactivate_mechanisms('Input')
 
     net.simulate_iterations(recovery_steps, 201, batch_progress_update_func=save_trace)

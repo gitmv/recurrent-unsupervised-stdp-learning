@@ -1,4 +1,4 @@
-from Behaviour_Modules import *
+from Behaviour_Core_Modules import *
 from Helper import *
 from UI.UI_Helper import *
 from Behaviour_Bar_Activator import *
@@ -69,8 +69,8 @@ net.initialize(info=True, storage_manager=sm)
 
 net.sm = sm
 
-Classifier_Weights_Pre(net['exc_neurons', 0]),
-Classifier_Weights_Post(net['exc_neurons', 0]),
+Weight_Classifier_Pre(net['exc_neurons', 0]),
+Weight_Classifier_Post(net['exc_neurons', 0]),
 
 #User interface
 if __name__ == '__main__' and ui:

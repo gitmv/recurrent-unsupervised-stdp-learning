@@ -1,6 +1,6 @@
 from UI.Analysis_Modules.Labeler_Base import *
 
-class Labeler_Backpropagation(Labeler_Base):
+class Backpropagation_Labeler(Labeler_Base):
 
     def get_recon_mat_and_label(self, neurons, id):
         recon = compute_temporal_reconstruction(neurons.network, neurons, id, neurons.tags[0])

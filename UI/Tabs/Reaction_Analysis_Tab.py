@@ -1,6 +1,5 @@
 from PymoNNto.Exploration.Network_UI.TabBase import *
 
-
 class Reaction_Analysis_Tab(TabBase):
 
     def __init__(self, title='Reaction_analysis'):
