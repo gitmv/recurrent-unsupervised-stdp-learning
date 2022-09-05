@@ -40,10 +40,24 @@ def plot_output_trace(data, plastic_steps, recovery_steps, target_activity, w=50
     plt.vlines((w+g)+w2, -0.1, 0.1, colors='k')
     plt.vlines((w+g)*2+w2, -0.1, 0.1, colors='k')
 
-    plt.plot(np.arange(0, w), data[0:w])
-    plt.plot(np.arange(0, w)+(w+g), data[plastic_steps-w2:plastic_steps+w2])
-    plt.plot(np.arange(0, w)+(w+g)*2, data[plastic_steps+recovery_steps-w2:plastic_steps+recovery_steps+w2])
-    plt.plot(np.arange(0, w)+(w+g)*3, data[-w:])
+    #plt.plot(np.arange(0, w), data[0:w])
+    #plt.plot(np.arange(0, w)+(w+g), data[plastic_steps-w2:plastic_steps+w2])
+    #plt.plot(np.arange(0, w)+(w+g)*2, data[plastic_steps+recovery_steps-w2:plastic_steps+recovery_steps+w2])
+    #plt.plot(np.arange(0, w)+(w+g)*3, data[-w:])
+
+    plt.plot(np.arange(0, w), data[0:w], c=u'#1f77b4')
+    plt.plot(np.arange(0, w2) + (w + g), data[plastic_steps - w2:plastic_steps], c=u'#1f77b4')
+
+    #plt.plot(np.arange(0, w)+(w+g), data[plastic_steps-w2:plastic_steps+w2])
+
+    plt.plot(np.arange(0, w2) + (w + g) + w2, data[plastic_steps:plastic_steps + w2], c=u'#ff7f0e')
+    plt.plot(np.arange(0, w2) + (w + g) * 2, data[plastic_steps + recovery_steps - w2:plastic_steps + recovery_steps], c=u'#ff7f0e')
+
+    #plt.plot(np.arange(0, w)+(w+g)*2, data[plastic_steps+recovery_steps-w2:plastic_steps+recovery_steps+w2])
+
+    plt.plot(np.arange(0, w2) + (w + g) * 2 + w2, data[plastic_steps + recovery_steps:plastic_steps + recovery_steps + w2], c=u'#2ca02c')
+    plt.plot(np.arange(0, w)+(w+g)*3, data[-w:], c=u'#2ca02c')
+
     plt.show()
 
 def save_trace(it, net):

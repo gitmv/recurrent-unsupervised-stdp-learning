@@ -82,6 +82,6 @@ if __name__ == '__main__' and ui:
     add_all_analysis_modules(net['exc_neurons', 0])
     show_UI(net, sm)
 else:
-    #net.add_behaviours_to_object({200: Recorder(variables=['np.mean(n.output)'])}, net.exc_neurons)
+    net.add_behaviours_to_object({200: Recorder(variables=['np.mean(n.output)'])}, net.exc_neurons)
     train_and_generate_text(net, input_steps, recovery_steps, free_steps, sm=sm)
-    #plot_output_trace(net['np.mean(n.output)', 0], plastic_steps, recovery_steps, net.exc_neurons.target_activity)
+    plot_output_trace(net['np.mean(n.output)', 0], input_steps, recovery_steps, net.exc_neurons.target_activity)

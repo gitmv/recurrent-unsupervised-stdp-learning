@@ -35,7 +35,7 @@ def show_UI(net, sm, qa=['STDP', 'Text_Activator'], additional_modules=None):
         Static_Classification(parent=neurons, name='input class', classes=neurons.Input_Mask)
 
     # launch ui
-    Network_UI(net, modules=my_modules, label=net.tags[0], storage_manager=sm, group_display_count=len(net.NeuronGroups), reduced_layout=False).show()
+    Network_UI(net, modules=my_modules, title=net.tags[0], storage_manager=sm, group_display_count=len(net.NeuronGroups), reduced_layout=False).show()
 
 
 
